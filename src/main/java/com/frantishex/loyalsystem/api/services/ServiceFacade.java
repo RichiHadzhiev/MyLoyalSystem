@@ -37,7 +37,9 @@ public class ServiceFacade {
 		Customer customer = cs.getCustomer(customerId);
 		sale.setDiscount(customer.getDiscount());
 		sale.setDiscounted_price(sale.getPrice().subtract(sale.getPrice().multiply(sale.getDiscount().divide(new BigDecimal(100)))));
+		customer.setTurnOver(customer.getTurnOver().add(sale.getDiscounted_price()));
 		sale.setCustomer(customer);
+		ss.addSale(sale);
 	}
 	
 	public List<Customer> getAllCustomers(Long merchantId){
@@ -54,6 +56,7 @@ public class ServiceFacade {
 		if(customer.getDiscount() == null) {
 			customer.setDiscount(merchant.getDiscount());
 		}
+		customer.setTurnOver(new BigDecimal(0));
 		cs.addCustomer(customer);
 	}
 	
