@@ -20,6 +20,8 @@ public class Sale {
 	
 	private BigDecimal discounted_price;
 	
+	private BigDecimal salePoints;
+	
 	@ManyToOne
 	private Customer customer;
 
@@ -62,4 +64,15 @@ public class Sale {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+	public BigDecimal getSalePoints() {
+		return salePoints;
+	}
+
+	public void setSalePoints(BigDecimal salePoints) {
+		this.salePoints = salePoints;
+	}
+	
+	
+	
 }

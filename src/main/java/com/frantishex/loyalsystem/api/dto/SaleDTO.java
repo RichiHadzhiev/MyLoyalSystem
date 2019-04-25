@@ -15,6 +15,8 @@ public class SaleDTO {
 	
 	private BigDecimal discounted_price;
 	
+	private BigDecimal salePoints;
+	
 	private String customerName;
 	
 	private BigDecimal merchantDiscount;
@@ -59,6 +61,14 @@ public class SaleDTO {
 		this.merchantDiscount = merchantDiscount;
 	}
 	
+	public BigDecimal getSalePoints() {
+		return salePoints;
+	}
+
+	public void setSalePoints(BigDecimal salePoints) {
+		this.salePoints = salePoints;
+	}
+
 	public static SaleDTO entityToDTO(Sale sale) {
 		ModelMapper mp = new ModelMapper();
 		mp.addMappings(new PropertyMap<Sale,SaleDTO>(){

@@ -19,6 +19,8 @@ public class Customer {
 	private BigDecimal discount;
 	
 	private BigDecimal turnOver;
+	
+	private BigDecimal points;
 
 	@ManyToOne
 	private Merchant merchant;
@@ -43,6 +45,10 @@ public class Customer {
 		return merchant;
 	}
 	
+	public BigDecimal getPoints() {
+		return points;
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -62,4 +68,10 @@ public class Customer {
 	public void setMerchant(Merchant merchant) {
 		this.merchant = merchant;
 	}
+
+	public void setPoints(BigDecimal points) {
+		this.points = points;
+	}
+	
+	
 }

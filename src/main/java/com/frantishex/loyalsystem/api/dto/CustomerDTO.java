@@ -15,7 +15,11 @@ public class CustomerDTO {
 	
 	private BigDecimal turnOver;
 	
+	private BigDecimal points;
+	
 	private BigDecimal merchantDiscount;
+	
+	private BigDecimal merchantScale;
 	
 	public String getName() {
 		return name;
@@ -49,12 +53,29 @@ public class CustomerDTO {
 		this.merchantDiscount = merchantDiscount;
 	}
 	
+	public BigDecimal getMerchantScale() {
+		return merchantScale;
+	}
+
+	public void setMerchantScale(BigDecimal merchantScale) {
+		this.merchantScale = merchantScale;
+	}
+
+	public BigDecimal getPoints() {
+		return points;
+	}
+
+	public void setPoints(BigDecimal points) {
+		this.points = points;
+	}
+
 	public static CustomerDTO entityToDTO(Customer customer) {
 		ModelMapper mp = new ModelMapper();
 		mp.addMappings(new PropertyMap<Customer,CustomerDTO>(){
 			@Override
 			protected void configure() {
 				map().setMerchantDiscount(source.getMerchant().getDiscount());
+				map().setMerchantScale(source.getMerchant().getScale());
 			}
 		});
 		CustomerDTO dto = mp.map(customer, CustomerDTO.class);

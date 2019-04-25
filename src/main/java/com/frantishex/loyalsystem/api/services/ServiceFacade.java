@@ -37,7 +37,9 @@ public class ServiceFacade {
 		Customer customer = cs.getCustomer(customerId);
 		sale.setDiscount(customer.getDiscount());
 		sale.setDiscounted_price(sale.getPrice().subtract(sale.getPrice().multiply(sale.getDiscount().divide(new BigDecimal(100)))));
+		sale.setSalePoints(customer.getMerchant().getScale().multiply(sale.getDiscounted_price()));
 		customer.setTurnOver(customer.getTurnOver().add(sale.getDiscounted_price()));
+		customer.setPoints(customer.getPoints().add(sale.getSalePoints()));
 		sale.setCustomer(customer);
 		ss.addSale(sale);
 	}
@@ -57,6 +59,7 @@ public class ServiceFacade {
 			customer.setDiscount(merchant.getDiscount());
 		}
 		customer.setTurnOver(new BigDecimal(0));
+		customer.setPoints(new BigDecimal(0));
 		cs.addCustomer(customer);
 	}
 	

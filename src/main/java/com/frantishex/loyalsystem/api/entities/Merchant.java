@@ -14,6 +14,8 @@ public class Merchant {
 	private Long id;
 	
 	private BigDecimal discount;
+	
+	private BigDecimal scale;
 
 	public Long getId() {
 		return id;
@@ -30,4 +32,14 @@ public class Merchant {
 	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
+
+	public BigDecimal getScale() {
+		return scale;
+	}
+
+	public void setScale(BigDecimal scale) {
+		this.scale = scale;
+	}
+	
+	
 }
